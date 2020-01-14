@@ -1,10 +1,10 @@
 var cacheName = 'shell-content';
 var filesToCache = [
-  '/css/01.css',
-  '/js/01.js',
-  '/js/02.js',
-  '/img/logo.png',
-  '/index.html'
+  './css/01.css',
+  './js/01.js',
+  './js/02.js',
+  './img/logo.png',
+  './index.html'
 ];
 
 self.addEventListener('install', function(e) {
