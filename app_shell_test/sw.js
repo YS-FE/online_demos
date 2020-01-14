@@ -16,3 +16,18 @@ self.addEventListener('install', function(e) {
     })
   );
 });
+
+
+// 捕获请求并返回缓存数据
+self.addEventListener('fetch', function(event) {
+  event.respondWith(caches.match(event.request).catch(function() {
+    return fetch(event.request);
+  }).then(function(response) {
+    caches.open(cacheName).then(function(cache) {
+      cache.put(event.request, response);
+    });
+    return response.clone();
+  }).catch(function() {
+    return caches.match('./img/logo.png');
+  }));
+});
